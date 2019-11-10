@@ -2,7 +2,7 @@
 
 {% block body %}
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <a class="navbar-brand" href="#"><i class="fas fa-key"></i> PrestaKeys</a>
+        <a class="navbar-brand" href="#"><i class="fas fa-home"></i> Main</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Mostrar secciones">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -10,13 +10,13 @@
             {% set ruta = app.request.get('_route') %}
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fas fa-home"></i> Portada <span class="sr-only">(actual)</span></a>
+                    <a class="nav-link" href="#"><i class="fas fa-won"></i> Elemento <span class="sr-only">(actual)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fas fa-users"></i> Usuarios</a>
+                    <a class="nav-link" href="#"><i class="fas fa-yc-square"></i>  ~ </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fas fa-key"></i> Llaves</a>
+                    <a class="nav-link" href="#"><i class="fas fa-3x"></i> ~ </a>
                 </li>
             </ul>
         </div>
@@ -34,6 +34,15 @@
                 {{ mensaje }}
             </div>
         {% endfor %}
-        {% block content %}{% endblock %}
+        <div id="block_content">
+
+
+        {% block content %}
+        {% endblock %}
+        </div>
     </div>
+    <style>
+
+
+    </style>
 {% endblock %}
