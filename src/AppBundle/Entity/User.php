@@ -54,7 +54,7 @@ class User implements UserInterface
     private $password;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean", options={"default":false})
      * @var bool
      */
     private $esAdmin;
@@ -63,7 +63,7 @@ class User implements UserInterface
      * @ORM\Column(type="string",nullable=true)
      * @var String
      */
-    private $image;
+    private $avatar;
 
     /**
      * @ORM\Column(type="integer")
@@ -189,20 +189,22 @@ class User implements UserInterface
     /**
      * @return String
      */
-    public function getImage()
+    public function getAvatar()
     {
-        return $this->image;
+        return $this->avatar;
     }
 
     /**
-     * @param String $image
+     * @param String $avatar
      * @return User
      */
-    public function setImage($image)
+    public function setAvatar($avatar)
     {
-        $this->image = $image;
+        $this->avatar = $avatar;
         return $this;
     }
+
+
 
     /**
      * @return int
