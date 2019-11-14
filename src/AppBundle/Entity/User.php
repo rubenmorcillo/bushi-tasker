@@ -23,7 +23,6 @@ class User implements UserInterface
      */
     private $id;
 
-
     /**
      * @ORM\Column(type="date")
      * @var \DateTime
@@ -71,7 +70,6 @@ class User implements UserInterface
      * @var int
      */
     private $credits;
-
 
 
 
