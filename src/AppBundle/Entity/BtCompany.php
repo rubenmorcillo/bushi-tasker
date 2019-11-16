@@ -89,5 +89,10 @@ class BtCompany
         return $this;
     }
 
+    public function __toString()
+    {
+        return $this->getName()." Id -> ".$this->getId();
+    }
+
 
 }
