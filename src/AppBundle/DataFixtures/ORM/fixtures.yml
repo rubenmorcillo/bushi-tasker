@@ -1,0 +1,33 @@
+AppBundle\Entity\BtUser:
+  admin:
+    #signDate: '<dateTimeBetween("-3 months", "now")> '
+    signDate: '<dateTime()>'
+    login:  cyberadmin
+    nickname: Mr. Fixer
+    password: cyberadmin
+    esAdmin: true
+
+
+
+  test:
+    #signDate: '<dateTimeBetween("-3 months", "now")> '
+    signDate: '<dateTime()>'
+    login: test
+    nickname (unique): Tester
+    password: test
+    esAdmin: false
+
+
+
+  worker_{1..20}:
+    #signDate: '<dateTimeBetween("-3 months", "now")> '
+    signDate: '<dateTime()>'
+    login (unique): '<es_ES:lastName()>'
+    nickname (unique): '<es_ES:firstName()>'
+    password: jugador
+    esAdmin: false
+
+
+
+
+

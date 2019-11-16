@@ -65,11 +65,6 @@ class BtUser implements UserInterface
      */
     private $avatar;
 
-    /**
-     * @ORM\Column(type="integer")
-     * @var int
-     */
-    private $credits;
 
 
 
@@ -87,7 +82,7 @@ class BtUser implements UserInterface
 
     /**
      * @param \DateTime $signDate
-     * @return User
+     * @return BtUser
      */
     public function setSignDate(\DateTime $signDate)
     {
@@ -106,7 +101,7 @@ class BtUser implements UserInterface
 
     /**
      * @param String $login
-     * @return User
+     * @return BtUser
      */
     public function setLogin($login)
     {
@@ -124,7 +119,7 @@ class BtUser implements UserInterface
 
     /**
      * @param String $nickname
-     * @return User
+     * @return BtUser
      */
     public function setNickname($nickname)
     {
@@ -142,7 +137,7 @@ class BtUser implements UserInterface
 
     /**
      * @param String $password
-     * @return User
+     * @return BtUser
      */
     public function setPassword($password)
     {
@@ -160,7 +155,7 @@ class BtUser implements UserInterface
 
     /**
      * @param bool $esAdmin
-     * @return User
+     * @return BtUser
      */
     public function setEsAdmin($esAdmin)
     {
@@ -168,23 +163,7 @@ class BtUser implements UserInterface
         return $this;
     }
 
-    /**
-     * @return int
-     */
-    public function getCredits()
-    {
-        return $this->credits;
-    }
 
-    /**
-     * @param int $credits
-     * @return User
-     */
-    public function setCredits($credits)
-    {
-        $this->credits = $credits;
-        return $this;
-    }
 
     /**
      * @return String
@@ -196,7 +175,7 @@ class BtUser implements UserInterface
 
     /**
      * @param String $avatar
-     * @return User
+     * @return BtUser
      */
     public function setAvatar($avatar)
     {
