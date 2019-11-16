@@ -14,9 +14,9 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="company")
+ * @ORM\Table(name="bt1_company")
  */
-class Company
+class BtCompany
 {
     /**
      * @ORM\Id
@@ -33,9 +33,9 @@ class Company
     private $name;
 
     /**
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\User")
-     * @ORM\JoinTable(name="company_members")
-     * @var User[]
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\BtUser")
+     * @ORM\JoinTable(name="bt2_company_members")
+     * @var BtUser[]
      */
     private $members;
 
@@ -63,7 +63,7 @@ class Company
 
     /**
      * @param string $name
-     * @return Company
+     * @return BtCompany
      */
     public function setName($name)
     {
@@ -72,7 +72,7 @@ class Company
     }
 
     /**
-     * @return User[]
+     * @return BtUser[]
      */
     public function getMembers()
     {
@@ -80,8 +80,8 @@ class Company
     }
 
     /**
-     * @param User[] $members
-     * @return Company
+     * @param BtUser[] $members
+     * @return BtCompany
      */
     public function setMembers($members)
     {

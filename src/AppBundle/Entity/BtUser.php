@@ -10,9 +10,9 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass="AppBundle\Repository\UserRepository")
- * @ORM\Table(name="User")
+ * @ORM\Table(name="bt1_user")
  */
-class User implements UserInterface
+class BtUser implements UserInterface
 {
 
     /**

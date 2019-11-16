@@ -13,9 +13,9 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="project")
+ * @ORM\Table(name="bt1_project")
  */
-class Project
+class BtProject
 {
 
     /**
@@ -39,9 +39,9 @@ class Project
     private $code;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Company")
+     * @ORM\ManyToOne(targetEntity="BtCompany")
      * @ORM\JoinColumn(nullable=false)
-     * @var Company
+     * @var BtCompany
      */
     private $company;
 
@@ -63,7 +63,7 @@ class Project
 
     /**
      * @param string $name
-     * @return Project
+     * @return BtProject
      */
     public function setName($name)
     {
@@ -81,7 +81,7 @@ class Project
 
     /**
      * @param string $code
-     * @return Project
+     * @return BtProject
      */
     public function setCode($code)
     {
@@ -90,7 +90,7 @@ class Project
     }
 
     /**
-     * @return Company
+     * @return BtCompany
      */
     public function getCompany()
     {
@@ -98,8 +98,8 @@ class Project
     }
 
     /**
-     * @param Company $company
-     * @return Project
+     * @param BtCompany $company
+     * @return BtProject
      */
     public function setCompany($company)
     {

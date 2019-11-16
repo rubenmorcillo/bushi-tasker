@@ -14,9 +14,9 @@ use Symfony\Component\Console\Helper\ProcessHelper;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="issue")
+ * @ORM\Table(name="bt1_issue")
  */
-class Issue
+class BtIssue
 {
 
     /**
@@ -52,22 +52,22 @@ class Issue
     private $priority;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Project")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\BtProject")
      * @ORM\JoinColumn(nullable=false)
-     * @var Project
+     * @var BtProject
      */
     private $project;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\BtUser")
      * @ORM\JoinColumn(nullable=false)
-     * @var User
+     * @var BtUser
      */
     private $informer;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
-     * @var User
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\BtUser")
+     * @var BtUser
      */
     private $responsable;
 
@@ -89,7 +89,7 @@ class Issue
 
     /**
      * @param string $title
-     * @return Issue
+     * @return BtIssue
      */
     public function setTitle($title)
     {
@@ -107,7 +107,7 @@ class Issue
 
     /**
      * @param string $desc
-     * @return Issue
+     * @return BtIssue
      */
     public function setDesc($desc)
     {
@@ -125,7 +125,7 @@ class Issue
 
     /**
      * @param string $type
-     * @return Issue
+     * @return BtIssue
      */
     public function setType($type)
     {
@@ -143,7 +143,7 @@ class Issue
 
     /**
      * @param string $priority
-     * @return Issue
+     * @return BtIssue
      */
     public function setPriority($priority)
     {
@@ -152,7 +152,7 @@ class Issue
     }
 
     /**
-     * @return Project
+     * @return BtProject
      */
     public function getProject()
     {
@@ -160,8 +160,8 @@ class Issue
     }
 
     /**
-     * @param Project $project
-     * @return Issue
+     * @param BtProject $project
+     * @return BtIssue
      */
     public function setProject($project)
     {
@@ -170,7 +170,7 @@ class Issue
     }
 
     /**
-     * @return User
+     * @return BtUser
      */
     public function getInformer()
     {
@@ -178,8 +178,8 @@ class Issue
     }
 
     /**
-     * @param User $informer
-     * @return Issue
+     * @param BtUser $informer
+     * @return BtIssue
      */
     public function setInformer($informer)
     {
@@ -188,7 +188,7 @@ class Issue
     }
 
     /**
-     * @return User
+     * @return BtUser
      */
     public function getResponsable()
     {
@@ -196,8 +196,8 @@ class Issue
     }
 
     /**
-     * @param User $responsable
-     * @return Issue
+     * @param BtUser $responsable
+     * @return BtIssue
      */
     public function setResponsable($responsable)
     {
