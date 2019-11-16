@@ -107,5 +107,9 @@ class BtProject
         return $this;
     }
 
+    public function __toString()
+    {
+        return "Proyecto ".$this->getName()." (".$this->getCode().") "." Company: ".$this->getCompany()->getName();
+    }
 
 }
