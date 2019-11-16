@@ -27,6 +27,34 @@ AppBundle\Entity\BtUser:
     password: jugador
     esAdmin: false
 
+AppBundle\Entity\BtCompany:
+  company1:
+    name: 'company1'
+
+AppBundle\Entity\BtProject:
+  project1:
+    name: 'project1'
+    code: 'PJ-CODE'
+    company: '@company1'
+
+  project2:
+    name: 'project2'
+    code: 'PJ2'
+    company: '@company1'
+
+AppBundle\Entity\BtIssue:
+  task_{1..10}:
+    title: '<es_ES:word()>'
+    detail: 'detalle'
+    priority: 'medium'
+    type: "task"
+    project:  '@project<numberBetween(1,2)>'
+    informer: '@worker_<numberBetween(1,20)>'
+
+
+
+
+
 
 
 
