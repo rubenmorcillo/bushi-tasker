@@ -11,4 +11,14 @@ class UserRepository extends ServiceEntityRepository
         parent::__construct($registry, BtUser::class);
     }
 
+    public function findById($id){
+
+            return $this->createQueryBuilder('b')
+                ->select('b')
+                ->where('b.id = :user')
+                ->setParameter('user', $id)
+                ->getQuery()
+                ->getResult();
+    }
+
 }

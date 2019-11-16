@@ -70,6 +70,7 @@ class BtUser implements UserInterface
 
     public function __construct()
     {
+
     }
 
     /**
@@ -183,6 +184,15 @@ class BtUser implements UserInterface
         return $this;
     }
 
+    /**
+     * @param int $id
+     * @return BtUser
+     */
+    public function setId(int $id)
+    {
+        $this->id = $id;
+        return $this;
+    }
 
 
     /**

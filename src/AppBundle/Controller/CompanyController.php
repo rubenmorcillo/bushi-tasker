@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\BtCompany;
+use AppBundle\Entity\BtProject;
 use AppBundle\Mapper\CompanyMapper;
 
 use AppBundle\Mapper\ProjectMapper;
