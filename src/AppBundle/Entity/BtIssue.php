@@ -34,10 +34,10 @@ class BtIssue
     private $title;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="string")
      * @var string
      */
-    private $desc;
+    private $detail;
 
     /**
      * @ORM\Column(type="string", columnDefinition="enum('history', 'task', 'error')")
@@ -46,7 +46,7 @@ class BtIssue
     private $type;
 
     /**
-     * @ORM\Column(type="string", columnDefinition="enum('highest','high', 'medium', 'low')")
+     * @ORM\Column(type="string",  columnDefinition="enum('highest','high', 'medium', 'low')")
      * @var string
      */
     private $priority;
@@ -59,7 +59,7 @@ class BtIssue
     private $project;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\BtUser")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\BtUser", cascade={"refresh"})
      * @ORM\JoinColumn(nullable=false)
      * @var BtUser
      */
@@ -82,7 +82,7 @@ class BtIssue
     /**
      * @return string
      */
-    public function getTitle()
+    public function getTitle(): string
     {
         return $this->title;
     }
@@ -91,7 +91,7 @@ class BtIssue
      * @param string $title
      * @return BtIssue
      */
-    public function setTitle($title)
+    public function setTitle(string $title): BtIssue
     {
         $this->title = $title;
         return $this;
@@ -100,25 +100,25 @@ class BtIssue
     /**
      * @return string
      */
-    public function getDesc()
+    public function getDetail(): string
     {
-        return $this->desc;
+        return $this->detail;
     }
 
     /**
-     * @param string $desc
+     * @param string $detail
      * @return BtIssue
      */
-    public function setDesc($desc)
+    public function setDetail(string $detail): BtIssue
     {
-        $this->desc = $desc;
+        $this->detail = $detail;
         return $this;
     }
 
     /**
      * @return string
      */
-    public function getType()
+    public function getType(): string
     {
         return $this->type;
     }
@@ -127,7 +127,7 @@ class BtIssue
      * @param string $type
      * @return BtIssue
      */
-    public function setType($type)
+    public function setType(string $type): BtIssue
     {
         $this->type = $type;
         return $this;
@@ -136,7 +136,7 @@ class BtIssue
     /**
      * @return string
      */
-    public function getPriority()
+    public function getPriority(): string
     {
         return $this->priority;
     }
@@ -145,7 +145,7 @@ class BtIssue
      * @param string $priority
      * @return BtIssue
      */
-    public function setPriority($priority)
+    public function setPriority(string $priority): BtIssue
     {
         $this->priority = $priority;
         return $this;
@@ -154,7 +154,7 @@ class BtIssue
     /**
      * @return BtProject
      */
-    public function getProject()
+    public function getProject(): BtProject
     {
         return $this->project;
     }
@@ -163,7 +163,7 @@ class BtIssue
      * @param BtProject $project
      * @return BtIssue
      */
-    public function setProject($project)
+    public function setProject(BtProject $project): BtIssue
     {
         $this->project = $project;
         return $this;
@@ -172,7 +172,7 @@ class BtIssue
     /**
      * @return BtUser
      */
-    public function getInformer()
+    public function getInformer(): BtUser
     {
         return $this->informer;
     }
@@ -181,7 +181,7 @@ class BtIssue
      * @param BtUser $informer
      * @return BtIssue
      */
-    public function setInformer($informer)
+    public function setInformer(BtUser $informer): BtIssue
     {
         $this->informer = $informer;
         return $this;
@@ -190,7 +190,7 @@ class BtIssue
     /**
      * @return BtUser
      */
-    public function getResponsable()
+    public function getResponsable(): BtUser
     {
         return $this->responsable;
     }
@@ -199,12 +199,16 @@ class BtIssue
      * @param BtUser $responsable
      * @return BtIssue
      */
-    public function setResponsable($responsable)
+    public function setResponsable(BtUser $responsable): BtIssue
     {
         $this->responsable = $responsable;
         return $this;
     }
 
+    public function __toString()
+    {
+        return $this->getTitle().": ".$this->getDetail();
+    }
 
 
 }
