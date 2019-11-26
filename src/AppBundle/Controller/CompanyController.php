@@ -3,7 +3,6 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\BtCompany;
-use AppBundle\Entity\BtProject;
 use AppBundle\Mapper\CompanyMapper;
 
 use AppBundle\Mapper\ProjectMapper;
@@ -23,6 +22,14 @@ class CompanyController extends Controller
     public function createCompany(Request $request, CompanyMapper $companyMapper, CompanyRepository $companyRepository)
     {
             return new Response( $companyRepository->saveCompany( $companyMapper->parse($request)), 200);
+    }
+
+    /**
+     * @Route("/company/{btCompany}", methods={"get"}, requirements={"btCompany": "\d+"})
+     */
+    public function getOneCompany( BtCompany $btCompany)
+    {
+        return new Response( $btCompany, 200);
     }
 
     /**
