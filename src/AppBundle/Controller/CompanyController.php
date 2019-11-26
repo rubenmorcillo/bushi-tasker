@@ -39,6 +39,7 @@ class CompanyController extends Controller
      */
     public function getOneCompany( BtCompany $btCompany)
     {
+
         return new Response( $btCompany, 200);
     }
 
