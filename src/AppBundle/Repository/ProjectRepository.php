@@ -1,5 +1,6 @@
 <?php
 namespace AppBundle\Repository;
+use AppBundle\Entity\BtCompany;
 use AppBundle\Entity\BtProject;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
@@ -26,6 +27,20 @@ class ProjectRepository extends ServiceEntityRepository
             throw new BadRequestHttpException($e);
         }
 
+    }
+
+    public function gettAllprojectsByCompany(BtCompany $btCompany){
+        try{
+            return $this->createQueryBuilder('p')
+                ->join('p.company', 'c', 'WITH' , 'c.id = :company')
+                ->setParameter('company', $btCompany)
+                ->getQuery()
+                ->getResult();
+
+
+        }catch (Exception $e){
+            throw new BadRequestHttpException($e);
+        }
     }
 
 }

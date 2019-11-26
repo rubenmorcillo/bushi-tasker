@@ -44,6 +44,15 @@ class CompanyController extends Controller
     }
 
     /**
+     * @Route("/company/{btCompany}/project", methods={"get"}, requirements={"btCompany": "\d+"})
+     */
+    public function getAllProjectsByCompany( BtCompany $btCompany, ProjectRepository $projectRepository)
+    {
+       $projects = implode( ", ", $projectRepository->gettAllprojectsByCompany($btCompany));
+        return new Response( $projects, 200);
+    }
+
+    /**
      * @Route("/company/{btCompany}/project", methods={"post"}, requirements={"btCompany": "\d+"})
      */
     public function createProject(Request $request, ProjectMapper $projectMapper, ProjectRepository $projectRepository, BtCompany $btCompany)
