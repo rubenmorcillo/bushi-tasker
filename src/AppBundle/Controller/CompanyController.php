@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\BtCompany;
+use AppBundle\Entity\BtUser;
 use AppBundle\Mapper\CompanyMapper;
 
 use AppBundle\Mapper\ProjectMapper;
@@ -22,6 +23,15 @@ class CompanyController extends Controller
     public function createCompany(Request $request, CompanyMapper $companyMapper, CompanyRepository $companyRepository)
     {
             return new Response( $companyRepository->saveCompany( $companyMapper->parse($request)), 200);
+    }
+
+    /**
+     * @Route("/company/user/{btUser}", methods={"get"}, requirements={"btUser": "\d+"})
+     */
+    public function getAllCompaniesByUser( BtUser $btUser, CompanyRepository $companyRepository)
+    {
+        $companies = implode( ", ", $companyRepository->getAllCompaniesByUser($btUser));
+        return new Response( $companies, 200);
     }
 
     /**

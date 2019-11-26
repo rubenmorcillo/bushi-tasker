@@ -1,6 +1,7 @@
 <?php
 namespace AppBundle\Repository;
 use AppBundle\Entity\BtCompany;
+use AppBundle\Entity\BtUser;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Symfony\Component\Config\Definition\Exception\Exception;
@@ -19,6 +20,21 @@ class CompanyRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
 
             return $company;
+        }catch (Exception $e){
+            throw new BadRequestHttpException($e);
+        }
+
+    }
+
+    public function getAllCompaniesByUser(BtUser $btUser){
+        try{
+            return $this->createQueryBuilder('c')
+                ->select('c')
+                ->distinct('true')
+                ->join('c.members', 'u')
+                ->groupBy('u.id')
+                ->getQuery()
+                ->getResult();
         }catch (Exception $e){
             throw new BadRequestHttpException($e);
         }
