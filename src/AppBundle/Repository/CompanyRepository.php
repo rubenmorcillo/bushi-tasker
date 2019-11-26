@@ -29,10 +29,8 @@ class CompanyRepository extends ServiceEntityRepository
     public function getAllCompaniesByUser(BtUser $btUser){
         try{
             return $this->createQueryBuilder('c')
-                ->select('c')
-                ->distinct('true')
-                ->join('c.members', 'u')
-                ->groupBy('u.id')
+                ->innerJoin('c.members', 's', 'WITH', 's.id = :user')
+                ->setParameter('user', $btUser)
                 ->getQuery()
                 ->getResult();
         }catch (Exception $e){
@@ -40,5 +38,7 @@ class CompanyRepository extends ServiceEntityRepository
         }
 
     }
+
+
 
 }
