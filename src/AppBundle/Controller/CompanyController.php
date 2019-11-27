@@ -63,9 +63,9 @@ class CompanyController extends Controller
     /**
      * @Route("/company/{btCompany}", methods={"delete"}, requirements={"btCompany": "\d+"})
      */
-    public function deleteCompany( BtCompany $btCompany, CompanyRepository $companyRepository)
+    public function deleteCompany( BtCompany $btCompany, CompanyRepository $companyRepository, ProjectRepository $projectRepository)
     {
-        return new Response($companyRepository->deleteCompany($btCompany),200);
+        return new Response($companyRepository->deleteCompany($btCompany, $projectRepository),200);
     }
 
 

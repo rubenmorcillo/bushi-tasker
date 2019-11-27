@@ -40,7 +40,7 @@ class CompanyRepository extends ServiceEntityRepository
 
     }
 
-    public function deleteCompany(BtCompany $btCompany){
+    public function deleteCompany(BtCompany $btCompany, ProjectRepository $projectRepository){
         try{
             $this->getEntityManager()->remove($btCompany);
             $this->getEntityManager()->flush();
@@ -48,6 +48,8 @@ class CompanyRepository extends ServiceEntityRepository
             throw new Exception($e->getMessage(),404);
         }
     }
+
+
 
 
 
