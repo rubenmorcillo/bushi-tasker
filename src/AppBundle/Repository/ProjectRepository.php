@@ -6,6 +6,7 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\DBAL\ConnectionException;
 use Doctrine\ORM\ORMException;
+use Doctrine\ORM\Query\ResultSetMapping;
 use Symfony\Component\Config\Definition\Exception\Exception;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 
@@ -55,11 +56,6 @@ class ProjectRepository extends ServiceEntityRepository
         }catch (ORMException $exception){
             throw new Exception($exception->getMessage(), 404);
         }
-    }
-
-    public function deleteAllProjectsByCompany(BtProject $btProject){
-
-        return null;
     }
 
 }

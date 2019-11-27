@@ -9,6 +9,7 @@
 namespace AppBundle\Entity;
 
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -44,6 +45,22 @@ class BtProject
      * @var BtCompany
      */
     private $company;
+
+
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\BtIssue", mappedBy="project", orphanRemoval=true)
+     * @var BtIssue[]
+     */
+    private $issues;
+
+    /**
+     * BtProject constructor.
+     */
+    public function __construct()
+    {
+        $this->issues = new ArrayCollection();
+    }
+
 
     /**
      * @return int
@@ -106,6 +123,26 @@ class BtProject
         $this->company = $company;
         return $this;
     }
+
+    /**
+     * @return BtIssue[]
+     */
+    public function getIssues(): array
+    {
+        return $this->issues;
+    }
+
+    /**
+     * @param BtIssue[] $issues
+     * @return BtProject
+     */
+    public function setIssues(array $issues): BtProject
+    {
+        $this->issues = $issues;
+        return $this;
+    }
+
+
 
     public function __toString()
     {

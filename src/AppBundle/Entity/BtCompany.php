@@ -39,10 +39,17 @@ class BtCompany
      */
     private $members;
 
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\BtProject" , mappedBy="company", orphanRemoval=true)
+     * @var BtProject[]
+     */
+    private $projects;
+
 
     public function __construct()
     {
         $this->members = new ArrayCollection();
+        $this->projects = new ArrayCollection();
     }
 
     /**
@@ -93,6 +100,25 @@ class BtCompany
     {
         return $this->getName()." Id -> ".$this->getId();
     }
+
+    /**
+     * @return BtProject[]
+     */
+    public function getProjects(): array
+    {
+        return $this->projects;
+    }
+
+    /**
+     * @param BtProject[] $projects
+     * @return BtCompany
+     */
+    public function setProjects(array $projects): BtCompany
+    {
+        $this->projects = $projects;
+        return $this;
+    }
+
 
 
 }
