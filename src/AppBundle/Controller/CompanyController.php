@@ -60,5 +60,13 @@ class CompanyController extends Controller
         return new Response( $projectRepository->saveProject( $projectMapper->parse($request, $btCompany)), 200);
     }
 
+    /**
+     * @Route("/company/{btCompany}", methods={"delete"}, requirements={"btCompany": "\d+"})
+     */
+    public function deleteCompany( BtCompany $btCompany, CompanyRepository $companyRepository)
+    {
+        return new Response($companyRepository->deleteCompany($btCompany),200);
+    }
+
 
 }
