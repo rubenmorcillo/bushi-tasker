@@ -40,14 +40,20 @@ class CompanyRepository extends ServiceEntityRepository
 
     }
 
-    public function deleteCompany(BtCompany $btCompany){
+    public function deleteCompany(BtCompany $btCompany, ProjectRepository $projectRepository){
         try{
+            $projectRepository->gettAllprojectsByCompany($btCompany);
+            foreach ($projectRepository->gettAllprojectsByCompany($btCompany) as $project){
+                $this->getEntityManager()->remove($project);
+            }
             $this->getEntityManager()->remove($btCompany);
             $this->getEntityManager()->flush();
         }catch (ORMException $e){
             throw new Exception($e->getMessage(),404);
         }
     }
+
+
 
 
 
