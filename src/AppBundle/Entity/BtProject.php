@@ -39,8 +39,8 @@ class BtProject
     private $code;
 
     /**
-     * @ORM\ManyToOne(targetEntity="BtCompany")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\ManyToOne(targetEntity="BtCompany", cascade={"remove", "persist"})
+     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      * @var BtCompany
      */
     private $company;
