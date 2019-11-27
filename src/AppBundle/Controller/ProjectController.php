@@ -23,5 +23,13 @@ class ProjectController extends Controller
         return new Response( $issueRepository->saveIssue( $issueMapper->parse($request, $btProject, $userRepository)), 200);
     }
 
+    /**
+     * @Route("/project/{btProject}/", methods={"get"}, requirements={"btProject": "\d+" })
+     */
+    public function getProject(BtProject $btProject)
+    {
+        return new Response( $btProject, 200);
+    }
+
 
 }
