@@ -4,6 +4,7 @@ use AppBundle\Entity\BtCompany;
 use AppBundle\Entity\BtProject;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
+use Doctrine\ORM\ORMException;
 use Symfony\Component\Config\Definition\Exception\Exception;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 
@@ -40,6 +41,15 @@ class ProjectRepository extends ServiceEntityRepository
 
         }catch (Exception $e){
             throw new BadRequestHttpException($e);
+        }
+    }
+
+    public function deleteProject(BtProject $btProject){
+        try{
+            $this->getEntityManager()->remove($btProject);
+            $this->getEntityManager()->flush();
+        }catch (ORMException $exception){
+            throw new Exception($exception->getMessage(), 404);
         }
     }
 

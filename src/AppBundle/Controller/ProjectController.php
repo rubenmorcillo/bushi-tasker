@@ -6,6 +6,7 @@ use AppBundle\Entity\BtProject;
 
 use AppBundle\Mapper\IssueMapper;
 use AppBundle\Repository\IssueRepository;
+use AppBundle\Repository\ProjectRepository;
 use AppBundle\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -30,6 +31,16 @@ class ProjectController extends Controller
     {
         return new Response( $btProject, 200);
     }
+
+    /**
+     * @Route("/project/{btProject}", methods={"DELETE"}, requirements={"btProject": "\d+"})
+     */
+    public function deleteProject( BtProject $btProject, ProjectRepository $projectRepository)
+    {
+
+        return new Response($projectRepository->deleteProject($btProject), 200);
+    }
+
 
 
 }
